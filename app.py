@@ -1,7 +1,15 @@
 import streamlit as st
+import os
 from monitor import check_url_content
 import time
 import pandas as pd
+
+@st.cache_resource
+def install_playwright():
+    st.info("Installing browser binaries... This happens only once.")
+    os.system("playwright install chromium")
+
+install_playwright()
 
 st.set_page_config(page_title="Monitor App", page_icon="🟢", layout="centered")
 
